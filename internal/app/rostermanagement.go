@@ -23,7 +23,7 @@ func CreateRoster(user int, campaign int, name string) {
 	}
 }
 
-func CountCP(roster model.Army) int {
+func CountCP(roster *model.Army) int {
 	cp := 0
 	pl := 0
 	dummydetaches := []model.Detachment{}
@@ -83,15 +83,14 @@ func DetachCost(dType string) int {
 }
 
 func AddDetachment(roster int, fraction string, detachType string) {
-	dummyroster := model.Army{
+	dummyRoster := model.Army{
 		Name:        "Klinika Valhalla",
 		UserID:      1,
 		CampaignID:  1,
 		SupplyLimit: 25,
 	}
-	var rosterObj model.Army
-	rosterObj = dummyRoster // ask context for roster by id
-	RosterCP = CountCp(rosterObj)
+	rosterObj := dummyRoster // ask context for roster by id
+	RosterCP := CountCP(&rosterObj)
 	RosterCP -= DetachCost(detachType)
 	Detachhment := model.Detachment{
 		ArmyID:         roster,

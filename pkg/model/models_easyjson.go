@@ -508,7 +508,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel5(in *jl
 		case "army_id":
 			out.ArmyID = int(in.Int())
 		case "fraction":
-			out.Fraction = int(in.Int())
+			out.Fraction = string(in.String())
 		case "cp_cost":
 			out.CpCost = int(in.Int())
 		case "detach_type":
@@ -542,7 +542,7 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel5(out *j
 	{
 		const prefix string = ",\"fraction\":"
 		out.RawString(prefix)
-		out.Int(int(in.Fraction))
+		out.String(string(in.Fraction))
 	}
 	{
 		const prefix string = ",\"cp_cost\":"

@@ -56,7 +56,7 @@ type CampaignPlayers struct {
 type Detachment struct {
 	ID             int    `json:"id"`
 	ArmyID         int    `json:"army_id"`
-	Fraction       int    `json:"fraction"`
+	Fraction       string `json:"fraction"`
 	CpCost         int    `json:"cp_cost"`
 	DetachmentType string `json:"detach_type"`
 	PowerLevel     int    `json:"power_level"`
