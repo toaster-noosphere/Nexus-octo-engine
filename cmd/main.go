@@ -5,11 +5,12 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/server"
+	"github.com/TheTh1rt33nth/Nexus-octo-engine/internal/app"
+	"github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/api"
 )
 
 func main() {
-	s := server.New("127.0.0.1:1337")
+	s := api.NewServer("127.0.0.1:1337", &app.Engine{})
 	done := make(chan os.Signal, 1)
 	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
