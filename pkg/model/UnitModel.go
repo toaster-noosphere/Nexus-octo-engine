@@ -2,7 +2,7 @@ package model
 
 type Unit struct {
 	id            int
-	armyID        int
+  detachmentID int
 	name          string
 	unitType      string
 	role          int    //move to enum once i learn how to enum
