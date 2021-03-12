@@ -1,12 +1,9 @@
 package rostermanagement
 
-import (
-	"fmt"
-	"github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/model/Models.go"
-)
+import "github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/model"
 
 func CreateRoster(user int, campaign int, name string) {
-	dummyCampaign := CampaignModel{
+	dummyCampaign := model.Campaign{
 		name:       "Battle for Rum bottle",
 		startingPL: 25,
 	}
@@ -16,7 +13,7 @@ func CreateRoster(user int, campaign int, name string) {
 	}
 	else
 	{ */
-	roster := ArmyModel{
+	roster := model.Army{
 		name:        name,
 		userID:      user,
 		campaignID:  campaign,
@@ -27,10 +24,10 @@ func CreateRoster(user int, campaign int, name string) {
 	}
 }
 
-func CountCP(roster ArmyModel) int {
+func CountCP(roster model.Army) int {
 	cp = 0
 	pl = 0
-	dummydetaches := []DetachmentModel{}
+	dummydetaches := []model.Detachment{}
 	if len(dummydetaches) {
 		return 0
 	}
@@ -83,17 +80,17 @@ func DetachCost(dType string) int {
 }
 
 func AddDetachment(roster int, fraction string, detachType string) {
-	dummyroster := ArmyModel{
+	dummyroster := model.Army{
 		name:        "Klinika Valhalla",
 		userId:      1,
 		campaignID:  1,
 		supplyLimit: 25,
 	}
-	var rosterObj ArmyModel
+	var rosterObj model.Army
 	rosterObj = dummyRoster // ask context for roster by id
 	rosterCP = CountCp(rosterObj)
 	rosterCP -= DetachCost(detachType)
-	detachhment := DetachmentModel{
+	detachhment := model.Detachment{
 		armyID:         roster,
 		fraction:       fraction,
 		cpCost:         DetachCost(detachType),

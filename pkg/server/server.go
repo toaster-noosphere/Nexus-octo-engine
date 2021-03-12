@@ -47,7 +47,7 @@ func (s *Server) setupRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/helloworld", s.helloworld)
-  r.POST("/api/rosters/create", s.createRoster)
+	//	r.POST("/api/rosters/create", s.createRoster)
 
 	return r
 }
