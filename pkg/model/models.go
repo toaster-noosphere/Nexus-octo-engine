@@ -81,13 +81,12 @@ type Detachment struct {
 
 type EventTallies struct {
 	EventID int `json:"event_id"`
-	TallyID int `json:"tally_id"`
+	TallyID string  `json:"tally_id"`
 	UnitID  int `json:"unit_id"`
 }
-
 type Tally struct {
 	Id    int `json:"id"`
-	Tally int `json:"tally"`
+	Tally string `json:"tally"`
 	Value int `json:"value"`
 }
 

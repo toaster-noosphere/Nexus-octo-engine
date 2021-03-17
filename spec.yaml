@@ -1,0 +1,189 @@
+---
+openapi: 3.0.1
+info:
+  title: Nexus-octo-engine
+  description: sadfwqefwqe
+  version: 0.0.1
+servers:
+- url: https://virtserver.swaggerhub.com/f0m41h4u7/Nexus-octo-engine/0.0.1
+  description: SwaggerHub API Auto Mocking
+- url: https://petstore.swagger.io/v2
+tags:
+- name: roster
+  description: roster
+paths:
+  /api/roster:
+    post:
+      tags:
+      - roster
+      summary: Create roster
+      operationId: updatePet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roster'
+        required: true
+      responses:
+        "400":
+          description: Invalid ID supplied
+components:
+  schemas:
+    Roster:
+      type: object
+      properties:
+        id:
+          type: integer
+        userID:
+          type: integer
+        campaignID:
+          type: integer
+        lore:
+          type: string
+        name:
+          type: string
+        supplyLimit:
+          type: integer
+        supplyUsed:
+          type: integer
+        availableCP:
+          type: integer
+        validated:
+          type: boolean
+    Advancement:
+        type: object
+        properties:
+            id:
+                type: integer
+            advType:
+                type: string
+            descr:
+                type: string
+            crusCost:
+                type: integer
+    CampaignAchievements:
+        type: object
+        properties:
+            achievementID:
+                type: integer
+            campaignID:
+                type: integer
+            userID:
+                type: integer
+    CampaignEvent:
+        type: object
+        properties:
+        id:
+            type: integer
+        name:
+            type: string
+        number: 
+            type: integer
+        player1:
+            type: integer
+        player2:
+            type: integer
+        victor:
+            type: integer
+        lore:
+            type: string
+    CampaignEvents:
+        type: object
+        properties:
+        eventID:
+            type: integer
+        campaignID:
+            type: integer
+    Campaign:
+        type: object
+        properties:
+        id:
+            type: integer
+        name:
+            type: string
+        descr:
+            type: string
+        isPublic:
+            type: boolean
+        startingPL:
+            type: integer
+    CampaignPlayers:
+        type: object
+        properties:
+        userID:
+            type: integer
+        campaignID:
+            type: integer
+        u_role:
+            type: string
+    Detachment:
+        type: object
+        properties:
+        id:
+            type: integer
+        armyID:
+            type: integer
+        fraction:
+            type: string
+        cpCost:
+            type: integer
+        detachmentType:
+            type: string
+        powerLevel:
+            type: integer
+    EventTallies:
+        type: object
+        properties:
+        eventID:
+            type: integer
+        tallyID: 
+            type: string
+        unitID:
+            type: integer
+    Tally:
+        type: object
+        properties:
+        id: 
+            type: integer
+        tally:
+            type: string
+        value: 
+            type: integer
+    UnitGrade:
+        type: object
+        properties:
+        unitID:
+            type: integer
+        advanceID:
+            type: integer
+    Unit:
+        type: object
+        properties:
+        id:
+            type: integer
+        detachmentID:
+            type: integer
+        name:
+            type: string
+        unitType:
+            type: string
+        role:
+            type: string
+        keywords:
+            type: string
+        experience:
+            type: integer
+        crusadePoints:
+            type: integer
+        powerLevel:
+            type: integer
+    User:
+        type: object
+        properties:
+        id: 
+            type: integer
+        name:
+            type: string
+        password:
+            type: string
+        
