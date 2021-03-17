@@ -1,22 +1,25 @@
-package server
+package api
 
 import (
 	"fmt"
 	"log"
 	"net/http"
 
+	"github.com/TheTh1rt33nth/Nexus-octo-engine/internal/app"
 	"github.com/gin-gonic/gin"
 )
 
 type Server struct {
-	http *http.Server
+	http   *http.Server
+	engine *app.Engine
 }
 
-func New(addr string) *Server {
+func NewServer(addr string, engine *app.Engine) *Server {
 	s := &Server{
 		http: &http.Server{
 			Addr: addr,
 		},
+		engine: engine,
 	}
 	s.http.Handler = s.setupRouter()
 
@@ -47,6 +50,7 @@ func (s *Server) setupRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/helloworld", s.helloworld)
+	//	r.POST("/api/rosters/create", s.createRoster)
 
 	return r
 }
