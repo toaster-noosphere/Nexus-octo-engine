@@ -7,5 +7,5 @@ type Storage interface {
 
 // Engine is the central core-logic struct.
 type Engine struct {
-	db Storage
+  db Storage //nolint:structcheck,unused
 }

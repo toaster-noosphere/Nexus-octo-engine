@@ -1,5 +1,21 @@
 package model
 
+type Detach string
+
+const (
+	Patrol         Detach = "patrol"
+	Batallion      Detach = "batallion"
+	Brigade        Detach = "Brigade"
+	Vanguard       Detach = "Vanguard"
+	Spearhead      Detach = "Spearhead"
+	Outrider       Detach = "Outrider"
+	SupremeCommand Detach = "Supreme Command"
+	SuperHeavy     Detach = "Super-heavy"
+	SuperHeavyAux  Detach = "Super-heavy auxillary"
+	Fortification  Detach = "Fortification network"
+	Auxillary      Detach = "Auxillary support"
+)
+
 type Army struct {
 	ID          int    `json:"id"`
 	UserID      int    `json:"user_id"`
@@ -41,10 +57,11 @@ type CampaignEvents struct {
 }
 
 type Campaign struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Descr    string `json:"descr"`
-	IsPublic bool   `json:"is_public"`
+	ID         int    `json:"id"`
+	Name       string `json:"name"`
+	Descr      string `json:"descr"`
+	IsPublic   bool   `json:"is_public"`
+	StartingPL int    `json:"starting_pl"`
 }
 
 type CampaignPlayers struct {
@@ -58,7 +75,7 @@ type Detachment struct {
 	ArmyID         int    `json:"army_id"`
 	Fraction       string `json:"fraction"`
 	CpCost         int    `json:"cp_cost"`
-	DetachmentType string `json:"detach_type"`
+	DetachmentType Detach `json:"detach_type"`
 	PowerLevel     int    `json:"power_level"`
 }
 

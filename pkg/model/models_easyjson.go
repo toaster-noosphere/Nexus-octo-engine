@@ -512,7 +512,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel5(in *jl
 		case "cp_cost":
 			out.CpCost = int(in.Int())
 		case "detach_type":
-			out.DetachmentType = string(in.String())
+			out.DetachmentType = Detach(in.String())
 		case "power_level":
 			out.PowerLevel = int(in.Int())
 		default:
@@ -953,6 +953,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(in *j
 			out.Descr = string(in.String())
 		case "is_public":
 			out.IsPublic = bool(in.Bool())
+		case "starting_pl":
+			out.StartingPL = int(in.Int())
 		default:
 			in.SkipRecursive()
 		}
@@ -986,6 +988,11 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(out *
 		const prefix string = ",\"is_public\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.IsPublic))
+	}
+	{
+		const prefix string = ",\"starting_pl\":"
+		out.RawString(prefix)
+		out.Int(int(in.StartingPL))
 	}
 	out.RawByte('}')
 }

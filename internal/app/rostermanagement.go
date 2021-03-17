@@ -2,25 +2,39 @@ package app
 
 import "github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/model"
 
+var DetachCost = map[model.Detach]int {
+      model.Patrol: 2,
+      model.Batallion: 3,
+      model.Brigade: 4,
+      model.Vanguard: 3,
+      model.Spearhead: 3,
+      model.Outrider: 3,
+      model.SupremeCommand: 0,
+      model.SuperHeavy: 3,
+      model.SuperHeavyAux: 3,
+      model.Fortification: 1,
+      model.Auxillary: 2,
+}
+
 func CreateRoster(user int, campaign int, name string) {
-	dummyCampaign := model.Campaign{
+	/*dummyCampaign := model.Campaign{
 		Name:       "Battle for Rum bottle",
 		StartingPL: 25,
-	}
+	}*/
 
 	// if /*check DBcontext if campaign already have a roster associated with tis name*/ {
 	/* fmt.Println("Go fuck yourself, you are already in this shit")
 	}
 	else
 	{ */
-	roster := model.Army{
+	/*roster := model.Army{
 		Name:        name,
 		UserID:      user,
 		CampaignID:  campaign,
 		SupplyLimit: dummyCampaign.StartingPL, // ask context for ACTUAL campaign by id
 		SupplyUsed:  0,                        // tomodel
 		// send dis shit to DBcontext, we're done here
-	}
+	}*/
 }
 
 func CountCP(roster *model.Army) int {
@@ -53,36 +67,7 @@ func CPbyPL(pl int) int {
 	return 0
 }
 
-func DetachCost(dType string) int {
-	switch {
-	case dType == "Patrol":
-		return 2
-	case dType == "Batallion":
-		return 3
-	case dType == "Brigade":
-		return 4
-	case dType == "Vanguard":
-		return 3
-	case dType == "Spearhead":
-		return 3
-	case dType == "Outrider":
-		return 3
-	case dType == "Supreme Command":
-		return 0
-	case dType == "Super-heavy":
-		return 3
-	case dType == "Super-heavy auxillary":
-		return 3
-	case dType == "Fortification network":
-		return 1
-	case dType == "Auxillary support":
-		return 2
-	}
-
-	return 0
-}
-
-func AddDetachment(roster int, fraction string, detachType string) {
+func AddDetachment(roster int, fraction string, detachType model.Detach) {
 	dummyRoster := model.Army{
 		Name:        "Klinika Valhalla",
 		UserID:      1,
@@ -90,15 +75,15 @@ func AddDetachment(roster int, fraction string, detachType string) {
 		SupplyLimit: 25,
 	}
 	rosterObj := dummyRoster // ask context for roster by id
-	RosterCP := CountCP(&rosterObj)
-	RosterCP -= DetachCost(detachType)
-	Detachhment := model.Detachment{
+	//RosterCP := CountCP(&rosterObj)
+	//RosterCP -= DetachCost[detachType]
+	/*Detachhment := model.Detachment{
 		ArmyID:         roster,
 		Fraction:       fraction,
-		CpCost:         DetachCost(detachType),
+		CpCost:         DetachCost[detachType],
 		DetachmentType: detachType,
-	}
-	rosterObj.AvailableCP -= DetachCost(detachType) // and update this stuff in DB
+	}*/
+	rosterObj.AvailableCP -= DetachCost[detachType] // and update this stuff in DB
 	// send this to DBcontext, seems okayish  }
 }
 
