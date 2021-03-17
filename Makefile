@@ -8,7 +8,7 @@ run:
 	./$(CMD)
 
 lint: 
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint
+	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 	golangci-lint run ./...
 
 .PHONY: build run lint
