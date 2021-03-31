@@ -19,6 +19,7 @@ var DetachCost = map[model.Detach]int {
 func CreateRoster(user int, campaign int, name string) {
 	/*dummyCampaign := model.Campaign{
 		Name:       "Battle for Rum bottle",
+    Descr: "Klinika Valhalla looking for something to drink",
 		StartingPL: 25,
 	}*/
 
@@ -32,7 +33,8 @@ func CreateRoster(user int, campaign int, name string) {
 		UserID:      user,
 		CampaignID:  campaign,
 		SupplyLimit: dummyCampaign.StartingPL, // ask context for ACTUAL campaign by id
-		SupplyUsed:  0,                        // tomodel
+		SupplyUsed:  0,                        
+    RequisitionPoints: dummyCampaign.StartingRP,
 		// send dis shit to DBcontext, we're done here
 	}*/
 }
@@ -40,7 +42,7 @@ func CreateRoster(user int, campaign int, name string) {
 func CountCP(roster *model.Army) int {
 	cp := 0
 	pl := 0
-	dummydetaches := []model.Detachment{}
+	dummydetaches := []model.Detachment{}//get actual detaches from DB
 	if len(dummydetaches) == 0 {
 		return 0
 	}
@@ -51,6 +53,30 @@ func CountCP(roster *model.Army) int {
 	cp += CPbyPL(pl)
 	return cp
 }
+
+func RPonSL (armyID int){
+  
+  //get actual roster by id
+  dummyRoster := model.Army{
+  Name:        "Klinika Valhalla",
+  UserID:      1,
+  CampaignID:  1,
+  SupplyLimit: 25,
+  SupplyUsed: 0,
+  RequisitionPoints: 5,
+  }
+  rosterObj:=dummyRoster // but actually ask DB for real roster by armyID
+  if rosterObj.RequisitionPoins>0{
+  rosterObj.RequsuisitionPoints-=1
+  rosterObj.SupplyLimit+=1
+  }
+  else{
+  Println("Not enough RP. Fight harder, commander!")
+  }
+
+}
+
+
 
 func CPbyPL(pl int) int {
 	switch {
@@ -73,6 +99,8 @@ func AddDetachment(roster int, fraction string, detachType model.Detach) {
 		UserID:      1,
 		CampaignID:  1,
 		SupplyLimit: 25,
+    SupplyUsed: 0,
+    RequisitionPoints: 5,
 	}
 	rosterObj := dummyRoster // ask context for roster by id
 	//RosterCP := CountCP(&rosterObj)
