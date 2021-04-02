@@ -345,6 +345,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel3(in *jl
 		switch key {
 		case "id":
 			out.Id = int(in.Int())
+		case "player_id":
+			out.PlayerID = int(in.Int())
 		case "tally":
 			out.Tally = string(in.String())
 		case "value":
@@ -367,6 +369,11 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel3(out *j
 		const prefix string = ",\"id\":"
 		out.RawString(prefix[1:])
 		out.Int(int(in.Id))
+	}
+	{
+		const prefix string = ",\"player_id\":"
+		out.RawString(prefix)
+		out.Int(int(in.PlayerID))
 	}
 	{
 		const prefix string = ",\"tally\":"
@@ -427,6 +434,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel4(in *jl
 			out.EventID = int(in.Int())
 		case "tally_id":
 			out.TallyID = string(in.String())
+		case "army_id":
+			out.ArmyID = int(in.Int())
 		case "unit_id":
 			out.UnitID = int(in.Int())
 		default:
@@ -452,6 +461,11 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel4(out *j
 		const prefix string = ",\"tally_id\":"
 		out.RawString(prefix)
 		out.String(string(in.TallyID))
+	}
+	{
+		const prefix string = ",\"army_id\":"
+		out.RawString(prefix)
+		out.Int(int(in.ArmyID))
 	}
 	{
 		const prefix string = ",\"unit_id\":"
@@ -665,80 +679,7 @@ func (v *CampaignPlayers) UnmarshalJSON(data []byte) error {
 func (v *CampaignPlayers) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel6(l, v)
 }
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(in *jlexer.Lexer, out *CampaignEvents) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "event_id":
-			out.EventID = int(in.Int())
-		case "campaign_id":
-			out.CampaignID = int(in.Int())
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(out *jwriter.Writer, in CampaignEvents) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"event_id\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.EventID))
-	}
-	{
-		const prefix string = ",\"campaign_id\":"
-		out.RawString(prefix)
-		out.Int(int(in.CampaignID))
-	}
-	out.RawByte('}')
-}
-
-// MarshalJSON supports json.Marshaler interface
-func (v CampaignEvents) MarshalJSON() ([]byte, error) {
-	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(&w, v)
-	return w.Buffer.BuildBytes(), w.Error
-}
-
-// MarshalEasyJSON supports easyjson.Marshaler interface
-func (v CampaignEvents) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(w, v)
-}
-
-// UnmarshalJSON supports json.Unmarshaler interface
-func (v *CampaignEvents) UnmarshalJSON(data []byte) error {
-	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(&r, v)
-	return r.Error()
-}
-
-// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *CampaignEvents) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(l, v)
-}
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(in *jlexer.Lexer, out *CampaignEvent) {
+func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(in *jlexer.Lexer, out *CampaignEvent) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -759,6 +700,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(in *jl
 		switch key {
 		case "id":
 			out.ID = int(in.Int())
+		case "campaign_id":
+			out.CampaignID = int(in.Int())
 		case "name":
 			out.Name = string(in.String())
 		case "number":
@@ -781,7 +724,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(out *jwriter.Writer, in CampaignEvent) {
+func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(out *jwriter.Writer, in CampaignEvent) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -789,6 +732,11 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(out *j
 		const prefix string = ",\"id\":"
 		out.RawString(prefix[1:])
 		out.Int(int(in.ID))
+	}
+	{
+		const prefix string = ",\"campaign_id\":"
+		out.RawString(prefix)
+		out.Int(int(in.CampaignID))
 	}
 	{
 		const prefix string = ",\"name\":"
@@ -826,27 +774,27 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v CampaignEvent) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(&w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v CampaignEvent) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *CampaignEvent) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(&r, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *CampaignEvent) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(l, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel7(l, v)
 }
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(in *jlexer.Lexer, out *CampaignAchievements) {
+func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(in *jlexer.Lexer, out *CampaignAchievements) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -881,7 +829,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(out *jwriter.Writer, in CampaignAchievements) {
+func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(out *jwriter.Writer, in CampaignAchievements) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -906,27 +854,27 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v CampaignAchievements) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(&w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v CampaignAchievements) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *CampaignAchievements) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(&r, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *CampaignAchievements) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(l, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel8(l, v)
 }
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(in *jlexer.Lexer, out *Campaign) {
+func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(in *jlexer.Lexer, out *Campaign) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -955,6 +903,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(in *j
 			out.IsPublic = bool(in.Bool())
 		case "starting_pl":
 			out.StartingPL = int(in.Int())
+		case "starting_rp":
+			out.StartingRP = int(in.Int())
 		default:
 			in.SkipRecursive()
 		}
@@ -965,7 +915,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(in *j
 		in.Consumed()
 	}
 }
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(out *jwriter.Writer, in Campaign) {
+func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(out *jwriter.Writer, in Campaign) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -994,33 +944,38 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(out *
 		out.RawString(prefix)
 		out.Int(int(in.StartingPL))
 	}
+	{
+		const prefix string = ",\"starting_rp\":"
+		out.RawString(prefix)
+		out.Int(int(in.StartingRP))
+	}
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
 func (v Campaign) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(&w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Campaign) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Campaign) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(&r, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Campaign) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(l, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel9(l, v)
 }
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(in *jlexer.Lexer, out *Army) {
+func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(in *jlexer.Lexer, out *Army) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -1055,6 +1010,8 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(in *j
 			out.SupplyUsed = int(in.Int())
 		case "available_cp":
 			out.AvailableCP = int(in.Int())
+		case "requisition_points":
+			out.RequisitionPoints = int(in.Int())
 		case "validated":
 			out.Validated = bool(in.Bool())
 		default:
@@ -1067,7 +1024,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(in *j
 		in.Consumed()
 	}
 }
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(out *jwriter.Writer, in Army) {
+func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(out *jwriter.Writer, in Army) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -1112,6 +1069,11 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(out *
 		out.Int(int(in.AvailableCP))
 	}
 	{
+		const prefix string = ",\"requisition_points\":"
+		out.RawString(prefix)
+		out.Int(int(in.RequisitionPoints))
+	}
+	{
 		const prefix string = ",\"validated\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.Validated))
@@ -1122,27 +1084,27 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(out *
 // MarshalJSON supports json.Marshaler interface
 func (v Army) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(&w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Army) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Army) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(&r, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Army) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(l, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel10(l, v)
 }
-func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(in *jlexer.Lexer, out *Advancement) {
+func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(in *jlexer.Lexer, out *Advancement) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -1179,7 +1141,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(in *j
 		in.Consumed()
 	}
 }
-func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(out *jwriter.Writer, in Advancement) {
+func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(out *jwriter.Writer, in Advancement) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -1209,23 +1171,23 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(out *
 // MarshalJSON supports json.Marshaler interface
 func (v Advancement) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(&w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Advancement) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(w, v)
+	easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Advancement) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(&r, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Advancement) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel12(l, v)
+	easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel11(l, v)
 }

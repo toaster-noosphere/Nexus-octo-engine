@@ -10,4 +10,7 @@ run:
 lint: 
 		golangci-lint run ./...
 
-.PHONY: build run lint
+gen:
+	cd pkg/model && easyjson -all models.go
+
+.PHONY: build run lint gen
