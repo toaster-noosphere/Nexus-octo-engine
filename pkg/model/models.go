@@ -25,6 +25,7 @@ type Army struct {
 	SupplyLimit int    `json:"supply_limit"`
 	SupplyUsed  int    `json:"supply_used"`
 	AvailableCP int    `json:"available_cp"`
+  RequisitionPoints int `json:"requisition_points"`
 	Validated   bool   `json:"validated"`
 }
 
@@ -43,7 +44,8 @@ type CampaignAchievements struct {
 
 type CampaignEvent struct {
 	ID      int    `json:"id"`
-	Name    string `json:"name"`
+  CampaignID int `json:"campaign_id"`
+  Name    string `json:"name"`
 	Number  int    `json:"number"`
 	Player1 int    `json:"player_one"`
 	Player2 int    `json:"player_two"`
@@ -51,10 +53,6 @@ type CampaignEvent struct {
 	Lore    string `json:"lore"`
 }
 
-type CampaignEvents struct {
-	EventID    int `json:"event_id"`
-	CampaignID int `json:"campaign_id"`
-}
 
 type Campaign struct {
 	ID         int    `json:"id"`
@@ -62,6 +60,7 @@ type Campaign struct {
 	Descr      string `json:"descr"`
 	IsPublic   bool   `json:"is_public"`
 	StartingPL int    `json:"starting_pl"`
+  StartingRP int `json:"starting_rp"`
 }
 
 type CampaignPlayers struct {
@@ -82,10 +81,12 @@ type Detachment struct {
 type EventTallies struct {
 	EventID int `json:"event_id"`
 	TallyID string  `json:"tally_id"`
+  ArmyID int `json:"army_id"`
 	UnitID  int `json:"unit_id"`
 }
 type Tally struct {
 	Id    int `json:"id"`
+  PlayerID int `json:"player_id"`
 	Tally string `json:"tally"`
 	Value int `json:"value"`
 }
