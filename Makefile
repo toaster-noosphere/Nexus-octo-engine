@@ -7,8 +7,8 @@ run:
 	make build
 	./$(CMD)
 
-lint:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint
+lint: 
+	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 	golangci-lint run ./...
 
 gen:
