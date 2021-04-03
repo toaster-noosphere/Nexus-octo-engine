@@ -346,7 +346,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel3(in *jl
 		case "id":
 			out.Id = int(in.Int())
 		case "tally":
-			out.Tally = int(in.Int())
+			out.Tally = string(in.String())
 		case "value":
 			out.Value = int(in.Int())
 		default:
@@ -371,7 +371,7 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel3(out *j
 	{
 		const prefix string = ",\"tally\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tally))
+		out.String(string(in.Tally))
 	}
 	{
 		const prefix string = ",\"value\":"
@@ -426,7 +426,7 @@ func easyjsonD2b7633eDecodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel4(in *jl
 		case "event_id":
 			out.EventID = int(in.Int())
 		case "tally_id":
-			out.TallyID = int(in.Int())
+			out.TallyID = string(in.String())
 		case "unit_id":
 			out.UnitID = int(in.Int())
 		default:
@@ -451,7 +451,7 @@ func easyjsonD2b7633eEncodeGithubComTheTh1rt33nthNexusOctoEnginePkgModel4(out *j
 	{
 		const prefix string = ",\"tally_id\":"
 		out.RawString(prefix)
-		out.Int(int(in.TallyID))
+		out.String(string(in.TallyID))
 	}
 	{
 		const prefix string = ",\"unit_id\":"
