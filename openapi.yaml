@@ -1,0 +1,788 @@
+openapi: 3.0.1
+info:
+  title: Nexus-octo-engine
+  version: 0.0.1
+servers:
+- url: https://virtserver.swaggerhub.com/f0m41h4u7/Nexus-octo-engine/0.0.1
+  description: SwaggerHub API Auto Mocking
+paths:
+  /roster/{rosterId}:
+    get:
+      tags:
+        - roster
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: rosterId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Roster'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - roster
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: rosterId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roster'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - roster
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: rosterId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaigns:
+    get:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignList'
+        '400':
+          description: Bad Request
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaigns/archived:
+    get:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignList'
+        '400':
+          description: Bad Request
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign:
+    post:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ID'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}:
+    get:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - campaign
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/rosters:
+    get:
+      tags:
+        - campaign
+        - roster
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RosterList'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/roster:
+    post:
+      tags:
+        - campaign
+        - roster
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roster'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ID'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/battles:
+    get:
+      tags:
+        - campaign
+        - battle
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BattleList'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/battle:
+    post:
+      tags:
+        - campaign
+        - battle
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Battle'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ID'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/story:
+    get:
+      tags:
+        - campaign
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoreList'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/players:
+    get:
+      tags:
+        - campaign
+        - user
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayerList'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      tags:
+        - campaign
+        - user
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /campaign/{campaignID}/player/{userID}:
+    put:
+      tags:
+        - campaign
+        - user
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: userID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - campaign
+        - user
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: campaignID
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: userID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /battle/{battleID}:
+    put:
+      tags:
+        - battle
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: battleID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Battle'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - battle
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: battleID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /battle/{battleID}/story:
+    get:
+      tags:
+        - battle
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: battleID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lore'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /player/{userID}:
+    get:
+      tags:
+        - user
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: userID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /player/{userID}/participate:
+    get:
+      tags:
+        - user
+        - campaign
+      security:
+          - bearerAuth: []
+      parameters:
+        - in: path
+          name: userID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignList'
+        '400':
+          $ref: '#/components/responses/InvalidIDError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /register:
+    post:
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  /login:
+    post:
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          description: Bad Request
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    InvalidIDError:
+      description: Invalid ID supplied
+  schemas:
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+        - token
+    Roster:
+      type: object
+      properties:
+        lore:
+          type: string
+        name:
+          type: string
+        supplyLimit:
+          type: integer
+        supplyUsed:
+          type: integer
+        availableCP:
+          type: integer
+        validated:
+          type: boolean
+      required:
+        - name
+        - supplyLimit
+        - supplyUsed
+        - availableCP
+        - validated
+    RosterList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Roster'
+    ID:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    Advancement:
+      type: object
+      properties:
+        id:
+          type: integer
+        advType:
+          type: string
+        descr:
+          type: string
+        crusCost:
+          type: integer
+    CampaignAchievements:
+      type: object
+      properties:
+        achievementID:
+          type: integer
+        campaignID:
+          type: integer
+        userID:
+          type: integer
+    Lore:
+      type: string
+    LoreList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Lore'
+    Battle:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        number: 
+          type: integer
+        player1:
+          type: integer
+        player2:
+          type: integer
+        victor:
+          type: integer
+        lore:
+          type: string
+      required:
+        - name
+        - number
+        - player1
+        - player2
+    BattleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Battle'
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        descr:
+          type: string
+        isPublic:
+          type: boolean
+        startingPL:
+          type: integer
+      required:
+        - name
+        - isPublic
+        - startingPL
+    CampaignList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Campaign'
+    Player:
+      type: object
+      properties:
+        userID:
+          type: integer
+        role:
+          type: string
+      required:
+        - userID
+        - role
+    PlayerList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Player'
+    Detachment:
+      type: object
+      properties:
+        id:
+          type: integer
+        armyID:
+          type: integer
+        fraction:
+          type: string
+        cpCost:
+          type: integer
+        detachmentType:
+          type: string
+        powerLevel:
+          type: integer
+    EventTallies:
+      type: object
+      properties:
+        eventID:
+          type: integer
+        tallyID: 
+          type: string
+        unitID:
+          type: integer
+    Tally:
+      type: object
+      properties:
+        id: 
+          type: integer
+        tally:
+          type: string
+        value: 
+          type: integer
+    UnitGrade:
+      type: object
+      properties:
+        unitID:
+          type: integer
+        advanceID:
+          type: integer
+    Unit:
+      type: object
+      properties:
+        id:
+          type: integer
+        detachmentID:
+          type: integer
+        name:
+          type: string
+        unitType:
+          type: string
+        role:
+          type: string
+        keywords:
+          type: string
+        experience:
+          type: integer
+        crusadePoints:
+          type: integer
+        powerLevel:
+          type: integer
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+      required:
+        - name
+        - password
+security:
+  - bearerAuth: []
