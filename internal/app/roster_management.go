@@ -58,7 +58,8 @@ func CountCP(roster *model.Army) int {
 	return cp
 }
 
-func RPonSL(armyID int) {
+//spend 1 requisition point for additional 5 supply limit
+func SpendRPonSL(armyID int) {
 	//get actual roster by id
 	dummyRoster := model.Army{
 		Name:              "Klinika Valhalla",
