@@ -78,7 +78,7 @@ func SpendRPonSL(armyID int) {
 	}
 }
 
-func CPbyPL(pl int) int {
+func PLtoCP(pl int) int {
 	switch {
 	case pl <= 50:
 		return 3
