@@ -54,7 +54,7 @@ func CountCP(roster *model.Army) int {
 		cp -= d.CpCost
 		pl += d.PowerLevel
 	}
-	cp += CPbyPL(pl)
+	cp += PLtoCP(pl)
 	return cp
 }
 
