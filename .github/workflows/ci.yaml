@@ -20,6 +20,11 @@ jobs:
         run: go mod download
       - name: Build
         run: make build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: docs
   test:
     name: Test
     runs-on: ubuntu-latest
