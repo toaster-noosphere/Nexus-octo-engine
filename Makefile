@@ -1,4 +1,4 @@
-CMD := server
+CMD := engine
 
 build:
 	go build -o $(CMD) ./cmd/main.go
@@ -11,4 +11,7 @@ lint:
 	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 	golangci-lint run ./...
 
-.PHONY: build run lint
+gen:
+	cd pkg/model && easyjson -all models.go
+
+.PHONY: build run lint gen

@@ -17,15 +17,16 @@ const (
 )
 
 type Army struct {
-	ID          int    `json:"id"`
-	UserID      int    `json:"user_id"`
-	CampaignID  int    `json:"campaign_id"`
-	Lore        string `json:"lore"`
-	Name        string `json:"name"`
-	SupplyLimit int    `json:"supply_limit"`
-	SupplyUsed  int    `json:"supply_used"`
-	AvailableCP int    `json:"available_cp"`
-	Validated   bool   `json:"validated"`
+	ID                int    `json:"id"`
+	UserID            int    `json:"user_id"`
+	CampaignID        int    `json:"campaign_id"`
+	Lore              string `json:"lore"`
+	Name              string `json:"name"`
+	SupplyLimit       int    `json:"supply_limit"`
+	SupplyUsed        int    `json:"supply_used"`
+	AvailableCP       int    `json:"available_cp"`
+	RequisitionPoints int    `json:"requisition_points"`
+	Validated         bool   `json:"validated"`
 }
 
 type Advancement struct {
@@ -42,18 +43,14 @@ type CampaignAchievements struct {
 }
 
 type CampaignEvent struct {
-	ID      int    `json:"id"`
-	Name    string `json:"name"`
-	Number  int    `json:"number"`
-	Player1 int    `json:"player_one"`
-	Player2 int    `json:"player_two"`
-	Victor  int    `json:"victor"`
-	Lore    string `json:"lore"`
-}
-
-type CampaignEvents struct {
-	EventID    int `json:"event_id"`
-	CampaignID int `json:"campaign_id"`
+	ID         int    `json:"id"`
+	CampaignID int    `json:"campaign_id"`
+	Name       string `json:"name"`
+	Number     int    `json:"number"`
+	Player1    int    `json:"player_one"`
+	Player2    int    `json:"player_two"`
+	Victor     int    `json:"victor"`
+	Lore       string `json:"lore"`
 }
 
 type Campaign struct {
@@ -62,6 +59,7 @@ type Campaign struct {
 	Descr      string `json:"descr"`
 	IsPublic   bool   `json:"is_public"`
 	StartingPL int    `json:"starting_pl"`
+	StartingRP int    `json:"starting_rp"`
 }
 
 type CampaignPlayers struct {
@@ -80,14 +78,16 @@ type Detachment struct {
 }
 
 type EventTallies struct {
-	EventID int `json:"event_id"`
-	TallyID string  `json:"tally_id"`
-	UnitID  int `json:"unit_id"`
+	EventID int    `json:"event_id"`
+	TallyID string `json:"tally_id"`
+	ArmyID  int    `json:"army_id"`
+	UnitID  int    `json:"unit_id"`
 }
 type Tally struct {
-	Id    int `json:"id"`
-	Tally string `json:"tally"`
-	Value int `json:"value"`
+	Id       int    `json:"id"`
+	PlayerID int    `json:"player_id"`
+	Tally    string `json:"tally"`
+	Value    int    `json:"value"`
 }
 
 type UnitGrade struct {
