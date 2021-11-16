@@ -5,8 +5,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/TheTh1rt33nth/Nexus-octo-engine/internal/api"
 	"github.com/TheTh1rt33nth/Nexus-octo-engine/internal/app"
-	"github.com/TheTh1rt33nth/Nexus-octo-engine/pkg/api"
 )
 
 func main() {
